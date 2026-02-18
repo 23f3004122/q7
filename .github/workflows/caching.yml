@@ -9,8 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Restore cache
         id: cache
@@ -21,9 +20,6 @@ jobs:
 
       - name: prime-cache-8acf1d4
         run: |
-          echo "Cache hit? ${{ steps.cache.outputs.cache-hit }}"
+          echo "Cache hit: ${{ steps.cache.outputs.cache-hit }}"
           mkdir -p ~/.cache-demo
-          echo "Cached on $(date)" > ~/.cache-demo/demo.txt
-
-      - name: Show cached file
-        run: cat ~/.cache-demo/demo.txt || echo "No cache yet"
+          echo "Cached data" > ~/.cache-demo/demo.txt
